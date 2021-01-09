@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Robo.Domain.Interfaces;
 using RoboProduto.Interfaces;
-using Robo.Domain.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Threading;
 
@@ -31,6 +27,7 @@ namespace RoboProduto.Services
                 while(taskRobo.WorkerSupportsCancellation == false)
                 {
                     // A cada 1 minuto (60000)
+                    // A cadas 5 segundos (5000)
 
                     Thread.Sleep(5000);
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RoboProduto.Interfaces
+﻿namespace RoboProduto.Interfaces
 {
     public interface IRoboService
     {

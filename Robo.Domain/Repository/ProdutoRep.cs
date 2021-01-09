@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using Robo.Domain.Interfaces;
+using System;
+using System.Data;
 using System.Net.Http;
-using System.Net.Http.Formatting;
-using Newtonsoft.Json;
-using Robo.Domain.Models;
 
 namespace Robo.Domain.Repository
 {
@@ -29,15 +23,9 @@ namespace Robo.Domain.Repository
                 var resultContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    //List<Produto> produto = JsonConvert.DeserializeObject<List<Produto>>(resultContent);
-
                     dt = (DataTable)JsonConvert.DeserializeObject(resultContent, (typeof(DataTable)));
-                }
                 else
-                {
                     throw new Exception("Erro no método GetByDepartamentoId");
-                }
             }
 
             return dt;
