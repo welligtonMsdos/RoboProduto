@@ -12,7 +12,6 @@ namespace RoboProduto.Services
         private readonly ILogger _logger;
         private BackgroundWorker taskRobo = new BackgroundWorker();
         
-
         public RoboService(IProdutoRep produtoRep, ILogger logger)
         {
             _produtoRep = produtoRep;
@@ -42,12 +41,16 @@ namespace RoboProduto.Services
                 }
             };
 
-            taskRobo.RunWorkerAsync();
+            if(!taskRobo.IsBusy) taskRobo.RunWorkerAsync();
         }
 
         public void Parar()
-        {
-            taskRobo.CancelAsync();
+        {            
+            if (taskRobo.IsBusy)
+            {
+                taskRobo.WorkerSupportsCancellation = true;
+                taskRobo.CancelAsync();                
+            }
         }
     }
 }

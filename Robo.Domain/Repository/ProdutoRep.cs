@@ -18,7 +18,7 @@ namespace Robo.Domain.Repository
 
             using (var httpClient = new HttpClient())
             { 
-                var result = httpClient.GetAsync("https://localhost:44361/api/Produto/GetByDepartamentoId/1").GetAwaiter().GetResult();
+                var result = httpClient.GetAsync("https://localhost:44361/api/Produto").GetAwaiter().GetResult();
                 
                 var resultContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 

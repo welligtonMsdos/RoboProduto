@@ -31,11 +31,11 @@ namespace RoboProduto
         {
             this.grpContainer = new System.Windows.Forms.GroupBox();
             this.gridContainer = new System.Windows.Forms.DataGridView();
-            this.grpFooter = new System.Windows.Forms.GroupBox();
-            this.btnAcao = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpFooter = new System.Windows.Forms.GroupBox();
+            this.btnAcao = new System.Windows.Forms.Button();
             this.grpContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContainer)).BeginInit();
             this.grpFooter.SuspendLayout();
@@ -75,6 +75,24 @@ namespace RoboProduto
             this.gridContainer.Size = new System.Drawing.Size(773, 361);
             this.gridContainer.TabIndex = 0;
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // descricao
+            // 
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // departamento
+            // 
+            this.departamento.HeaderText = "Departamento";
+            this.departamento.Name = "departamento";
+            this.departamento.ReadOnly = true;
+            // 
             // grpFooter
             // 
             this.grpFooter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -97,24 +115,6 @@ namespace RoboProduto
             this.btnAcao.UseVisualStyleBackColor = true;
             this.btnAcao.Click += new System.EventHandler(this.btnAcao_Click);
             // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // descricao
-            // 
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // departamento
-            // 
-            this.departamento.HeaderText = "Departamento";
-            this.departamento.Name = "departamento";
-            this.departamento.ReadOnly = true;
-            // 
             // frmRobo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,6 +126,7 @@ namespace RoboProduto
             this.Name = "frmRobo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Robô Produto";
+            this.Load += new System.EventHandler(this.frmRobo_Load);
             this.grpContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridContainer)).EndInit();
             this.grpFooter.ResumeLayout(false);

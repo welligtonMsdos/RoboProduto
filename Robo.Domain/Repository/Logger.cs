@@ -22,9 +22,9 @@ namespace Robo.Domain.Repository
                 DataGridViewTextBoxCell descricao = new DataGridViewTextBoxCell();
                 DataGridViewTextBoxCell departamento = new DataGridViewTextBoxCell();
 
-                id.Value = linha[0].ToString();
-                descricao.Value = linha[1].ToString();
-                departamento.Value = linha[2].ToString();
+                id.Value = linha["id"].ToString();
+                descricao.Value = linha["descricao"].ToString();
+                departamento.Value = linha["departamento"].ToString();
 
                 row.Cells.AddRange(id, descricao, departamento);
 

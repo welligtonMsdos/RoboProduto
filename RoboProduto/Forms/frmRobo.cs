@@ -7,7 +7,8 @@ namespace RoboProduto
 {
     public partial class frmRobo : Form
     {
-        private bool status = false;    
+        private bool status = false;
+        RoboService roboService;
 
         public frmRobo()
         {
@@ -24,8 +25,6 @@ namespace RoboProduto
 
         private void Iniciar()
         {
-            RoboService roboService = new RoboService(new ProdutoRep(), new Logger(ref gridContainer));
-
             status = true;
 
             btnAcao.Text = "Parar";
@@ -38,6 +37,13 @@ namespace RoboProduto
             status = false;
 
             btnAcao.Text = "Iniciar";
+
+            roboService.Parar();
+        }
+
+        private void frmRobo_Load(object sender, EventArgs e)
+        {
+            roboService = new RoboService(new ProdutoRep(), new Logger(ref gridContainer));
         }
     }
 }
