@@ -36,6 +36,8 @@ namespace RoboProduto
             this.departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpFooter = new System.Windows.Forms.GroupBox();
             this.btnAcao = new System.Windows.Forms.Button();
+            this.btnDepartamento = new System.Windows.Forms.Button();
+            this.btnProduto = new System.Windows.Forms.Button();
             this.grpContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridContainer)).BeginInit();
             this.grpFooter.SuspendLayout();
@@ -97,6 +99,8 @@ namespace RoboProduto
             // 
             this.grpFooter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpFooter.Controls.Add(this.btnProduto);
+            this.grpFooter.Controls.Add(this.btnDepartamento);
             this.grpFooter.Controls.Add(this.btnAcao);
             this.grpFooter.Location = new System.Drawing.Point(8, 385);
             this.grpFooter.Name = "grpFooter";
@@ -114,6 +118,28 @@ namespace RoboProduto
             this.btnAcao.Text = "Iniciar";
             this.btnAcao.UseVisualStyleBackColor = true;
             this.btnAcao.Click += new System.EventHandler(this.btnAcao_Click);
+            // 
+            // btnDepartamento
+            // 
+            this.btnDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDepartamento.Location = new System.Drawing.Point(6, 14);
+            this.btnDepartamento.Name = "btnDepartamento";
+            this.btnDepartamento.Size = new System.Drawing.Size(98, 37);
+            this.btnDepartamento.TabIndex = 1;
+            this.btnDepartamento.Text = "Departamento";
+            this.btnDepartamento.UseVisualStyleBackColor = true;
+            this.btnDepartamento.Click += new System.EventHandler(this.btnDepartamento_Click);
+            // 
+            // btnProduto
+            // 
+            this.btnProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProduto.Location = new System.Drawing.Point(110, 14);
+            this.btnProduto.Name = "btnProduto";
+            this.btnProduto.Size = new System.Drawing.Size(98, 37);
+            this.btnProduto.TabIndex = 2;
+            this.btnProduto.Text = "Produto";
+            this.btnProduto.UseVisualStyleBackColor = true;
+            this.btnProduto.Click += new System.EventHandler(this.btnProduto_Click);
             // 
             // frmRobo
             // 
@@ -143,6 +169,8 @@ namespace RoboProduto
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn departamento;
+        private System.Windows.Forms.Button btnDepartamento;
+        private System.Windows.Forms.Button btnProduto;
     }
 }
 

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPesquisa.Designer.cs">
+      <DependentUpon>frmPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmRobo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +62,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RoboService.cs" />
+    <EmbeddedResource Include="Forms\frmPesquisa.resx">
+      <DependentUpon>frmPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRobo.resx">
       <DependentUpon>frmRobo.cs</DependentUpon>
     </EmbeddedResource>

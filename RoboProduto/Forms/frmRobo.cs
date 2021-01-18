@@ -1,4 +1,5 @@
 ﻿using Robo.Domain.Repository;
+using RoboProduto.Forms;
 using RoboProduto.Services;
 using System;
 using System.Windows.Forms;
@@ -44,6 +45,18 @@ namespace RoboProduto
         private void frmRobo_Load(object sender, EventArgs e)
         {
             roboService = new RoboService(new ProdutoRep(), new Logger(ref gridContainer));
+        }
+
+        private void btnDepartamento_Click(object sender, EventArgs e)
+        {
+            frmPesquisa frm = new frmPesquisa("Departamento");
+            frm.ShowDialog();
+        }
+
+        private void btnProduto_Click(object sender, EventArgs e)
+        {
+            frmPesquisa frm = new frmPesquisa("Produto");
+            frm.ShowDialog();
         }
     }
 }
