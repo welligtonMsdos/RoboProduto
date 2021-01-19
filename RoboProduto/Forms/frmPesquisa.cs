@@ -1,4 +1,4 @@
-﻿using Robo.Domain.Data;
+﻿using Robo.Domain.Pesquisa;
 using Robo.Domain.Enum;
 using Robo.Domain.Interfaces;
 using Robo.Domain.Repository;

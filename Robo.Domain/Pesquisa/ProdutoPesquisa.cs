@@ -3,7 +3,7 @@ using Robo.Domain.Interfaces;
 using System;
 using System.Data;
 
-namespace Robo.Domain.Data
+namespace Robo.Domain.Pesquisa
 {
     public class ProdutoPesquisa : IPesquisa
     {

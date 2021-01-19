@@ -5,7 +5,7 @@ using Robo.Domain.Models;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Robo.Domain.Data
+namespace Robo.Domain.Pesquisa
 {
     public class DepartamentoPesquisa : IPesquisa
     {
