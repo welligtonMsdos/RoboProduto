@@ -10,5 +10,15 @@ namespace Robo.Domain.Models
     {
         public int? id { get; set; }
         public string descricao { get; set; }
+
+        public Departamento(int? id, string descricao)
+        {
+            this.id = id;
+            this.descricao = descricao;
+        }
+
+        public Departamento()
+        {
+        }
     }
 }

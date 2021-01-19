@@ -2,7 +2,8 @@
 
 namespace Robo.Domain.Interfaces
 {
-    public interface IProdutoRep : IRepository<Produto>
+    public interface IDepartamentoRep : IRepository<Departamento>
     {
+
     }
 }

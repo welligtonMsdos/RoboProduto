@@ -30,18 +30,18 @@ namespace RoboProduto.Forms
         private void InitializeComponent()
         {
             this.grpContainer = new System.Windows.Forms.GroupBox();
-            this.grpTitle = new System.Windows.Forms.GroupBox();
-            this.grpMenu = new System.Windows.Forms.GroupBox();
             this.gridPesquisa = new System.Windows.Forms.DataGridView();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.lblPesquisa = new System.Windows.Forms.Label();
+            this.grpTitle = new System.Windows.Forms.GroupBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.lblPesquisa = new System.Windows.Forms.Label();
+            this.grpMenu = new System.Windows.Forms.GroupBox();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.grpContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.grpTitle.SuspendLayout();
             this.grpMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
             // grpContainer
@@ -55,31 +55,6 @@ namespace RoboProduto.Forms
             this.grpContainer.Size = new System.Drawing.Size(636, 393);
             this.grpContainer.TabIndex = 3;
             this.grpContainer.TabStop = false;
-            // 
-            // grpTitle
-            // 
-            this.grpTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpTitle.Controls.Add(this.txtPesquisa);
-            this.grpTitle.Controls.Add(this.lblPesquisa);
-            this.grpTitle.Location = new System.Drawing.Point(8, -1);
-            this.grpTitle.Name = "grpTitle";
-            this.grpTitle.Size = new System.Drawing.Size(785, 57);
-            this.grpTitle.TabIndex = 2;
-            this.grpTitle.TabStop = false;
-            // 
-            // grpMenu
-            // 
-            this.grpMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.grpMenu.Controls.Add(this.btnExcluir);
-            this.grpMenu.Controls.Add(this.btnEditar);
-            this.grpMenu.Controls.Add(this.btnNovo);
-            this.grpMenu.Location = new System.Drawing.Point(8, 52);
-            this.grpMenu.Name = "grpMenu";
-            this.grpMenu.Size = new System.Drawing.Size(145, 394);
-            this.grpMenu.TabIndex = 2;
-            this.grpMenu.TabStop = false;
             // 
             // gridPesquisa
             // 
@@ -96,28 +71,53 @@ namespace RoboProduto.Forms
             this.gridPesquisa.MultiSelect = false;
             this.gridPesquisa.Name = "gridPesquisa";
             this.gridPesquisa.ReadOnly = true;
+            this.gridPesquisa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPesquisa.Size = new System.Drawing.Size(624, 374);
             this.gridPesquisa.TabIndex = 1;
+            this.gridPesquisa.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPesquisa_RowEnter);
             // 
-            // btnNovo
+            // grpTitle
             // 
-            this.btnNovo.Location = new System.Drawing.Point(21, 29);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(98, 37);
-            this.btnNovo.TabIndex = 1;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.grpTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpTitle.Controls.Add(this.txtPesquisa);
+            this.grpTitle.Controls.Add(this.lblPesquisa);
+            this.grpTitle.Location = new System.Drawing.Point(8, -1);
+            this.grpTitle.Name = "grpTitle";
+            this.grpTitle.Size = new System.Drawing.Size(785, 57);
+            this.grpTitle.TabIndex = 2;
+            this.grpTitle.TabStop = false;
             // 
-            // btnEditar
+            // txtPesquisa
             // 
-            this.btnEditar.Location = new System.Drawing.Point(21, 95);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(98, 37);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            this.txtPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisa.Location = new System.Drawing.Point(155, 20);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(624, 20);
+            this.txtPesquisa.TabIndex = 1;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
+            // lblPesquisa
+            // 
+            this.lblPesquisa.AutoSize = true;
+            this.lblPesquisa.Location = new System.Drawing.Point(18, 23);
+            this.lblPesquisa.Name = "lblPesquisa";
+            this.lblPesquisa.Size = new System.Drawing.Size(35, 13);
+            this.lblPesquisa.TabIndex = 0;
+            this.lblPesquisa.Text = "label1";
+            // 
+            // grpMenu
+            // 
+            this.grpMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpMenu.Controls.Add(this.btnExcluir);
+            this.grpMenu.Controls.Add(this.btnEditar);
+            this.grpMenu.Controls.Add(this.btnNovo);
+            this.grpMenu.Location = new System.Drawing.Point(8, 52);
+            this.grpMenu.Name = "grpMenu";
+            this.grpMenu.Size = new System.Drawing.Size(145, 394);
+            this.grpMenu.TabIndex = 2;
+            this.grpMenu.TabStop = false;
             // 
             // btnExcluir
             // 
@@ -129,23 +129,25 @@ namespace RoboProduto.Forms
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // lblPesquisa
+            // btnEditar
             // 
-            this.lblPesquisa.AutoSize = true;
-            this.lblPesquisa.Location = new System.Drawing.Point(18, 23);
-            this.lblPesquisa.Name = "lblPesquisa";
-            this.lblPesquisa.Size = new System.Drawing.Size(35, 13);
-            this.lblPesquisa.TabIndex = 0;
-            this.lblPesquisa.Text = "label1";
+            this.btnEditar.Location = new System.Drawing.Point(21, 95);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(98, 37);
+            this.btnEditar.TabIndex = 2;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // txtPesquisa
+            // btnNovo
             // 
-            this.txtPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisa.Location = new System.Drawing.Point(155, 20);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(624, 20);
-            this.txtPesquisa.TabIndex = 1;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            this.btnNovo.Location = new System.Drawing.Point(21, 29);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(98, 37);
+            this.btnNovo.TabIndex = 1;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // frmPesquisa
             // 
@@ -159,11 +161,12 @@ namespace RoboProduto.Forms
             this.Name = "frmPesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmPesquisa_Load);
+            this.Shown += new System.EventHandler(this.frmPesquisa_Shown);
             this.grpContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.grpTitle.ResumeLayout(false);
             this.grpTitle.PerformLayout();
             this.grpMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);
 
         }

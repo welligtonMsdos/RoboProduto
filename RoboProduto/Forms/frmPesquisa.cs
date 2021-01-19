@@ -1,30 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Robo.Domain.Data;
 using Robo.Domain.Enum;
 using Robo.Domain.Interfaces;
-using Robo.Domain.Data;
+using Robo.Domain.Repository;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace RoboProduto.Forms
 {
     public partial class frmPesquisa : Form
     {
         private readonly IPesquisa _pesquisa;
+        private readonly IDepartamentoRep _departamentoRep;
+        private readonly IProdutoRep _produtoRep;
+
         private DataTable dt = new DataTable();
+        private int id, index;
         public frmPesquisa(string tabela)
         {
             InitializeComponent();
 
             if (tabela.ToUpper() == ETable.DEPARTAMENTO)
-                _pesquisa = new Departamento();
-            else if(tabela.ToUpper() == ETable.PRODUTO)
-                _pesquisa = new Produto();
+            {
+                _departamentoRep = new DepartamentoRep();
+                _pesquisa = new DepartamentoPesquisa(_departamentoRep);
+            }
+            else if (tabela.ToUpper() == ETable.PRODUTO)
+            {
+                _produtoRep = new ProdutoRep();
+                _pesquisa = new ProdutoPesquisa(_produtoRep);
+            }
 
             Text = _pesquisa.GetTitle();
             lblPesquisa.Text = "Descrição:";
@@ -46,12 +52,13 @@ namespace RoboProduto.Forms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            _pesquisa.Editar();
+            _pesquisa.Editar(id);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            _pesquisa.Excluir();
+            if (_pesquisa.Excluir(id))
+                gridPesquisa.Rows.RemoveAt(index);
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
@@ -63,6 +70,17 @@ namespace RoboProduto.Forms
             DataView view = query.AsDataView();
 
             gridPesquisa.DataSource = view;
-        }       
+        }
+
+        private void gridPesquisa_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            index = e.RowIndex;
+            id = int.Parse(gridPesquisa.Rows[index].Cells["id"].Value.ToString());
+        }
+
+        private void frmPesquisa_Shown(object sender, EventArgs e)
+        {
+            gridPesquisa.Focus();
+        }
     }
 }

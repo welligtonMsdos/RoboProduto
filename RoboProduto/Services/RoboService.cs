@@ -3,6 +3,7 @@ using RoboProduto.Interfaces;
 using System;
 using System.ComponentModel;
 using System.Threading;
+using Robo.Domain.Repository;
 
 namespace RoboProduto.Services
 {
