@@ -36,16 +36,26 @@ namespace Robo.Domain.Repository
         public DataTable GetById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Insert(Produto obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Produto ObterDados(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Produto obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Validacao(Produto obj)
+        {
+            throw new NotImplementedException();
         }       
-
-        public bool Update(Produto obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        Produto IRepository<Produto>.Insert(Produto obj)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

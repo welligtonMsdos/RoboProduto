@@ -2,6 +2,8 @@
 using Robo.Domain.Interfaces;
 using Robo.Domain.Models;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Net.Http;
 using System.Text;
@@ -95,12 +97,7 @@ namespace Robo.Domain.Repository
             return dt;
         }
 
-        public bool Update(Departamento obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        Departamento IRepository<Departamento>.Insert(Departamento obj)
+        public void Insert(Departamento obj)
         {
             try
             {
@@ -118,17 +115,11 @@ namespace Robo.Domain.Repository
                     {
                         dynamic data = JsonConvert.DeserializeObject(resultContent);
 
-                        if (data.success == true)
-                        {
-                            obj.id = data.data.id;                            
-                        }
-                        else
+                        if (data.success == false)
                             throw new Exception(data.data);
                     }
                     else
-                        throw new Exception("Erro no método Insert");
-
-                    return obj;
+                        throw new Exception("Erro no método Insert");                   
                 }
             }
             catch (Exception ex)
@@ -136,5 +127,74 @@ namespace Robo.Domain.Repository
                 throw new Exception(ex.Message);
             }
         }
+
+        public Departamento ObterDados(int id)
+        {
+            Departamento departamento = new Departamento();
+
+            DataTable dt = GetById(id);
+
+            if (dt.Rows.Count > 0)
+            {
+                departamento.id = int.Parse(dt.Rows[0]["id"].ToString());
+                departamento.descricao = dt.Rows[0]["descricao"].ToString();
+            }
+
+            return departamento;
+        }
+
+        public void Update(Departamento obj)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var jsonContent = JsonConvert.SerializeObject(obj);
+
+                    var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                    var result = httpClient.PutAsync("https://localhost:44361/api/Departamento/", contentString).GetAwaiter().GetResult();
+
+                    var resultContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                    if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        dynamic data = JsonConvert.DeserializeObject(resultContent);
+
+                        if (data.success == false)
+                            throw new Exception(data.data);
+                    }
+                    else
+                        throw new Exception("Erro no método Insert");                   
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool Validacao(Departamento obj)
+        {
+            bool resultado = true;
+
+            if (obj != null)
+            {
+                ValidationContext context = new ValidationContext(obj, null, null);
+                IList<ValidationResult> errors = new List<ValidationResult>();
+                if (!Validator.TryValidateObject(obj, context, errors, true))
+                {
+                    foreach (ValidationResult result in errors)
+                    {
+                        MessageBox.Show(result.ErrorMessage, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        resultado = false;
+                    }
+                }
+            }
+            else
+                resultado = false;
+
+            return resultado;
+        }       
     }
 }

@@ -29,13 +29,16 @@ namespace Robo.Domain.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpContainer = new System.Windows.Forms.GroupBox();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.grpFooter = new System.Windows.Forms.GroupBox();
             this.btnAcao = new System.Windows.Forms.Button();
+            this.bsDepartamento = new System.Windows.Forms.BindingSource(this.components);
             this.grpContainer.SuspendLayout();
             this.grpFooter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDepartamento)).BeginInit();
             this.SuspendLayout();
             // 
             // grpContainer
@@ -62,6 +65,7 @@ namespace Robo.Domain.Forms
             // 
             // txtDescricao
             // 
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Location = new System.Drawing.Point(83, 32);
             this.txtDescricao.MaximumSize = new System.Drawing.Size(306, 20);
             this.txtDescricao.MaxLength = 15;
@@ -103,10 +107,14 @@ namespace Robo.Domain.Forms
             this.MinimumSize = new System.Drawing.Size(427, 261);
             this.Name = "frmDepartamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Departamento";            
+            this.Text = "Departamento";
+           
+           
+            this.Load += new System.EventHandler(this.frmDepartamento_Load);
             this.grpContainer.ResumeLayout(false);
             this.grpContainer.PerformLayout();
             this.grpFooter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsDepartamento)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -118,5 +126,6 @@ namespace Robo.Domain.Forms
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.GroupBox grpFooter;
         private System.Windows.Forms.Button btnAcao;
+        private System.Windows.Forms.BindingSource bsDepartamento;
     }
 }

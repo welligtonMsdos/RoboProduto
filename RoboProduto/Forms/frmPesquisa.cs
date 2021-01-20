@@ -38,6 +38,11 @@ namespace RoboProduto.Forms
 
         private void frmPesquisa_Load(object sender, EventArgs e)
         {
+            Dados();
+        }
+
+        private void Dados()
+        {
             dt = _pesquisa.GetAll();
 
             gridPesquisa.DataSource = dt;
@@ -48,11 +53,15 @@ namespace RoboProduto.Forms
         private void btnNovo_Click(object sender, EventArgs e)
         {
             _pesquisa.Novo();
+
+            Dados();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             _pesquisa.Editar(id);
+
+            Dados();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

@@ -18,18 +18,9 @@ namespace Robo.Domain.Pesquisa
 
         public void Editar(int id)
         {
-            Departamento departamento = new Departamento();
-
-            DataTable dt = _departamentoRep.GetById(id);
-
-            if (dt.Rows.Count > 0)
-            {
-                departamento.id = int.Parse(dt.Rows[0]["id"].ToString());
-                departamento.descricao = dt.Rows[0]["descricao"].ToString();
-
-                frmDepartamento frm = new frmDepartamento(_departamentoRep, departamento);
-                frm.ShowDialog();
-            }
+            frmDepartamento frm = new frmDepartamento(_departamentoRep);
+            frm.Id = id;
+            frm.ShowDialog();
         }
 
         public bool Excluir(int id)
@@ -54,8 +45,8 @@ namespace Robo.Domain.Pesquisa
 
         public void Novo()
         {
-            frmDepartamento frm = new frmDepartamento(_departamentoRep, new Models.Departamento());
+            frmDepartamento frm = new frmDepartamento(_departamentoRep);
             frm.ShowDialog();
-        }
+        }       
     }
 }
