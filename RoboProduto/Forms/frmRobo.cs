@@ -3,6 +3,7 @@ using RoboProduto.Forms;
 using RoboProduto.Services;
 using System;
 using System.Windows.Forms;
+using Robo.Domain.Enum;
 
 namespace RoboProduto
 {
@@ -49,13 +50,13 @@ namespace RoboProduto
 
         private void btnDepartamento_Click(object sender, EventArgs e)
         {
-            frmPesquisa frm = new frmPesquisa("Departamento");
+            frmPesquisa frm = new frmPesquisa(ETabela.DEPARTAMENTO);
             frm.ShowDialog();
         }
 
         private void btnProduto_Click(object sender, EventArgs e)
         {
-            frmPesquisa frm = new frmPesquisa("Produto");
+            frmPesquisa frm = new frmPesquisa(ETabela.PRODUTO);
             frm.ShowDialog();
         }
     }

@@ -17,16 +17,16 @@ namespace RoboProduto.Forms
 
         private DataTable dt = new DataTable();
         private int id, index;
-        public frmPesquisa(string tabela)
+        public frmPesquisa(ETabela eTabela)
         {
             InitializeComponent();
-
-            if (tabela.ToUpper() == ETable.DEPARTAMENTO)
+            
+            if (eTabela == ETabela.DEPARTAMENTO)
             {
                 _departamentoRep = new DepartamentoRep();
                 _pesquisa = new DepartamentoPesquisa(_departamentoRep);
             }
-            else if (tabela.ToUpper() == ETable.PRODUTO)
+            else if (eTabela == ETabela.PRODUTO)
             {
                 _produtoRep = new ProdutoRep();
                 _pesquisa = new ProdutoPesquisa(_produtoRep);

@@ -6,7 +6,7 @@ namespace Robo.Domain.Interfaces
     {
         DataTable GetAll();
         DataTable GetById(int id);
-        bool Insert(T obj);
+        T Insert(T obj);   
         bool Update(T obj);
         bool Delete(int id);
     }

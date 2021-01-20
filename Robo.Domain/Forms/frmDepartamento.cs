@@ -23,16 +23,26 @@ namespace Robo.Domain.Forms
 
         private void btnAcao_Click(object sender, EventArgs e)
         {
-            if (departamento.id == null)
+            try
             {
-                departamento = new Departamento(0, txtDescricao.Text.Trim());
-                _departamentoRep.Insert(departamento);
+                if (departamento.id == null)
+                {
+                    departamento = _departamentoRep.Insert(new Departamento(0, txtDescricao.Text.Trim()));
+                    if (departamento.id != null && departamento.id > 0)
+                    {
+                        MessageBox.Show(string.Format($"Salvo com sucesso ID Nº { departamento.id }"));
+                    }
+                }
+                else
+                {
+                    departamento.descricao = txtDescricao.Text.Trim();
+                    _departamentoRep.Update(departamento);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                departamento.descricao = txtDescricao.Text.Trim();
-                _departamentoRep.Update(departamento);
-            }
+                MessageBox.Show(ex.Message);
+            }            
         }
     }
 }

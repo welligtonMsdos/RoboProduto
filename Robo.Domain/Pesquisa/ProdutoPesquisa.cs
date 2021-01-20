@@ -29,7 +29,7 @@ namespace Robo.Domain.Pesquisa
 
         public string GetTitle()
         {
-            return ETable.PRODUTO;
+            return "PRODUTO";
         }
 
         public void Novo()

@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\ETabela.cs" />
     <Compile Include="Pesquisa\DepartamentoPesquisa.cs" />
     <Compile Include="Pesquisa\ProdutoPesquisa.cs" />
-    <Compile Include="Enum\ETable.cs" />
     <Compile Include="Forms\frmDepartamento.cs">
       <SubType>Form</SubType>
     </Compile>

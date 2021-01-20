@@ -4,6 +4,7 @@ using Robo.Domain.Models;
 using System;
 using System.Data;
 using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Robo.Domain.Repository
@@ -42,14 +43,24 @@ namespace Robo.Domain.Repository
 
             using (var httpClient = new HttpClient())
             {
-                var result = httpClient.GetAsync("https://localhost:44361/api/Departamento/GetAllByRobo").GetAwaiter().GetResult();
+                var result = httpClient.GetAsync("https://localhost:44361/api/Departamento").GetAwaiter().GetResult();
 
                 var resultContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
-                    dt = (DataTable)JsonConvert.DeserializeObject(resultContent, (typeof(DataTable)));
+                {
+                    dynamic objResponse = JsonConvert.DeserializeObject(resultContent);
+
+                    if (objResponse.success == true)
+                    {
+                        var jsonContent = JsonConvert.SerializeObject(objResponse.data);
+                        dt = (DataTable)JsonConvert.DeserializeObject(jsonContent, (typeof(DataTable)));
+                    }
+                    else
+                        throw new Exception(objResponse.data);
+                }
                 else
-                    throw new Exception("Erro no método GetByDepartamentoId");
+                    throw new Exception("Erro no método GetAll");
             }
 
             return dt;
@@ -61,15 +72,22 @@ namespace Robo.Domain.Repository
 
             using (var httpClient = new HttpClient())
             {
-                var result = httpClient.GetAsync("https://localhost:44361/api/Departamento/GetByIdRobo/" + id).GetAwaiter().GetResult();
+                var result = httpClient.GetAsync("https://localhost:44361/api/Departamento/GetById/" + id).GetAwaiter().GetResult();
 
                 var resultContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-                if (resultContent.ToString().Contains("Erro"))
-                    throw new Exception("Erro no método GetById");
-
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
-                    dt = (DataTable)JsonConvert.DeserializeObject(resultContent, (typeof(DataTable)));
+                {
+                    dynamic objResponse = JsonConvert.DeserializeObject(resultContent);
+
+                    if (objResponse.success == true)
+                    {
+                        var jsonContent = JsonConvert.SerializeObject(objResponse.data);
+                        dt = (DataTable)JsonConvert.DeserializeObject(jsonContent, (typeof(DataTable)));
+                    }
+                    else
+                        throw new Exception(objResponse.data);
+                }
                 else
                     throw new Exception("Erro no método GetById");
             }
@@ -77,14 +95,46 @@ namespace Robo.Domain.Repository
             return dt;
         }
 
-        public bool Insert(Departamento obj)
+        public bool Update(Departamento obj)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Departamento obj)
+        Departamento IRepository<Departamento>.Insert(Departamento obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var jsonContent = JsonConvert.SerializeObject(obj);
+
+                    var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                    var result = httpClient.PostAsync("https://localhost:44361/api/Departamento/", contentString).GetAwaiter().GetResult();
+
+                    var resultContent = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                    if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        dynamic data = JsonConvert.DeserializeObject(resultContent);
+
+                        if (data.success == true)
+                        {
+                            obj.id = data.data.id;                            
+                        }
+                        else
+                            throw new Exception(data.data);
+                    }
+                    else
+                        throw new Exception("Erro no método Insert");
+
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
