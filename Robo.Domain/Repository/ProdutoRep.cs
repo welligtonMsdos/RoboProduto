@@ -26,6 +26,7 @@ namespace Robo.Domain.Repository
 
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                     dt = (DataTable)JsonConvert.DeserializeObject(resultContent, (typeof(DataTable)));
+
                 else
                     throw new Exception("Erro no método GetByDepartamentoId");
             }
